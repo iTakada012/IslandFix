@@ -5,7 +5,6 @@ import {showMessage} from 'react-native-flash-message';
 
 import {Item} from '@/components/settings/item';
 import {ItemsContainer} from '@/components/settings/items-container';
-import {LanguageItem} from '@/components/settings/language-item';
 import {ThemeItem} from '@/components/settings/theme-item';
 import {FocusAwareStatusBar, ScrollView, Text, View} from '@/components/ui';
 import {translate} from '@/lib';
@@ -63,7 +62,6 @@ export default observer(function Settings() {
           </Text>
 
           <ItemsContainer title="settings.generale">
-            <LanguageItem />
             <ThemeItem />
           </ItemsContainer>
 
