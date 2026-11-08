@@ -34,6 +34,24 @@ export default observer(function Settings() {
       ],
     );
   };
+  const clearAll = () => {
+    const doClear = () => {
+      reports.clearAll();
+      showMessage({message: 'All reports deleted', type: 'success'});
+    };
+    if (Platform.OS === 'web') {
+      doClear();
+      return;
+    }
+    Alert.alert(
+      'Delete all reports?',
+      'Every report on this device will be removed. This cannot be undone.',
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {text: 'Delete all', style: 'destructive', onPress: doClear},
+      ],
+    );
+  };
 
   return (
     <>
@@ -60,6 +78,7 @@ export default observer(function Settings() {
 
           <ItemsContainer title="settings.data">
             <Item text="settings.reset_demo" onPress={resetData} />
+            <Item text="settings.clear_all" onPress={clearAll} />
           </ItemsContainer>
 
           <View className="my-8">

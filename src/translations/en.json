@@ -30,6 +30,7 @@
     "website": "Website",
     "data": "Data",
     "reset_demo": "Reset demo data",
+    "clear_all": "Delete all reports",
     "reports_saved": "Reports on this device"
   },
   "welcome": "Welcome to IslandFix"
