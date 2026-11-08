@@ -12,11 +12,11 @@ import {
 } from '@/components/ui';
 import {useAuth} from '@/app/providers/auth/auth-provider';
 
-const POINTS = [
-  {icon: '📸', text: 'Snap a photo of a broken street light, leak or pothole'},
-  {icon: '🧭', text: 'We send it to the right agency: Council, STELCO or MWSC'},
-  {icon: '🔔', text: 'Follow progress until it is fixed'},
-  {icon: '📴', text: 'Works offline: your reports are saved on your phone'},
+const POINTS: {icon: IconName; text: string}[] = [
+  {icon: 'camera-outline', text: 'Snap a photo of a broken street light, leak or pothole'},
+  {icon: 'compass-outline', text: 'We send it to the right agency: Council, STELCO or MWSC'},
+  {icon: 'bell-outline', text: 'Follow progress until it is fixed'},
+  {icon: 'cloud-off-outline', text: 'Works offline: your reports are saved on your phone'},
 ];
 
 /** Shown once on first launch. */

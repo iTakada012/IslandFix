@@ -4,6 +4,7 @@ import * as React from 'react';
 import {Alert, Linking, Platform} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {CategoryIcon} from '@/components/reports/category-icon';
+import {AppIcon} from '@/components/ui/app-icon';
 import {useAuth} from '@/app/providers/auth/auth-provider';
 import {AgencyBadge, StatusBadge} from '@/components/reports/badges';
 import {EmptyState} from '@/components/reports/empty-state';
