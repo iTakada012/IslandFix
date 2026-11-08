@@ -5,27 +5,22 @@ import type {LoginFormProps} from '@/components/login-form';
 import {LoginForm} from '@/components/login-form';
 import {FocusAwareStatusBar} from '@/components/ui';
 import {useAuth} from '@/app/providers/auth/auth-provider';
-import {makeUserId, type AppUser} from '@/lib/reports';
+import {authenticate} from '@/lib/reports';
 
 export default function Login() {
   const router = useRouter();
   const {signIn, setIsFirstTime} = useAuth();
 
   const onSubmit: LoginFormProps['onSubmit'] = data => {
-    const name = data.name.trim();
-    const user: AppUser =
-      data.accountType === 'citizen'
-        ? {id: makeUserId(name), name, role: 'citizen'}
-        : {
-            id: makeUserId(name, data.accountType),
-            name,
-            role: 'staff',
-            agency: data.accountType,
-          };
+    const user = authenticate(data.email, data.password);
+    if (!user) {
+      return 'Incorrect email or password';
+    }
 
     setIsFirstTime(false);
     signIn(user);
     router.replace('/');
+    return null;
   };
 
   return (

@@ -1,127 +1,113 @@
 import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
-import type {SubmitHandler} from 'react-hook-form';
-import {Controller, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {KeyboardAvoidingView, Platform} from 'react-native';
 import * as z from 'zod';
 
-import {Button, ControlledInput, ScrollView, Text, View} from '@/components/ui';
-import {AGENCIES} from '@/lib/reports';
-import {ChoiceChip} from './reports/choice-chip';
-
-/** "Who are you?" options. Staff options map to an agency. */
-export const ACCOUNT_TYPES = [
-  {
-    value: 'citizen',
-    label: 'Citizen',
-    icon: '🙋',
-    hint: 'Report problems on the island',
-  },
-  {
-    value: 'council',
-    label: AGENCIES.council.name,
-    icon: '🏛️',
-    hint: 'Council staff',
-  },
-  {
-    value: 'stelco',
-    label: AGENCIES.stelco.name,
-    icon: '⚡',
-    hint: 'Electricity staff',
-  },
-  {
-    value: 'mwsc',
-    label: AGENCIES.mwsc.name,
-    icon: '💧',
-    hint: 'Water & sewerage staff',
-  },
-] as const;
+import {Button, ControlledInput, Pressable, ScrollView, Text, View} from '@/components/ui';
+import {AGENCIES, DEMO_ACCOUNTS} from '@/lib/reports';
 
 const schema = z.object({
-  name: z
-    .string({message: 'Please enter your name'})
+  email: z
+    .string({message: 'Email is required'})
     .trim()
-    .min(2, 'Name must be at least 2 characters')
-    .max(40, 'Name is too long'),
-  accountType: z.enum(['citizen', 'council', 'stelco', 'mwsc'], {
-    message: 'Choose an account type',
-  }),
+    .min(1, 'Email is required')
+    .email('Enter a valid email address'),
+  password: z.string({message: 'Password is required'}).min(1, 'Password is required'),
 });
 
 export type FormType = z.infer<typeof schema>;
 
 export type LoginFormProps = {
-  onSubmit?: SubmitHandler<FormType>;
+  /** Return an error message to show, or null if sign in worked. */
+  onSubmit: (data: FormType) => string | null;
 };
 
-export const LoginForm = ({onSubmit = () => {}}: LoginFormProps) => {
-  const {handleSubmit, control} = useForm<FormType>({
+export const LoginForm = ({onSubmit}: LoginFormProps) => {
+  const {handleSubmit, control, setValue, setError, clearErrors} = useForm<FormType>({
     resolver: zodResolver(schema),
-    defaultValues: {name: '', accountType: 'citizen'},
+    defaultValues: {email: '', password: ''},
   });
+
+  const submit = (data: FormType) => {
+    const error = onSubmit(data);
+    if (error) {
+      setError('password', {message: error});
+    }
+  };
+
+  // Tapping a demo account fills in its email and password
+  const fillDemo = (email: string, password: string) => {
+    clearErrors();
+    setValue('email', email);
+    setValue('password', password);
+  };
 
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       keyboardVerticalOffset={10}>
-      <ScrollView
-        contentContainerStyle={{flexGrow: 1}}
-        keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps="handled">
         <View className="flex-1 justify-center p-5">
-          <Text
-            testID="form-title"
-            className="pb-2 text-center text-4xl font-bold">
+          <Text testID="form-title" className="pb-2 text-center text-4xl font-bold">
             Sign in
           </Text>
           <Text className="mb-6 text-center text-neutral-500">
-            Demo login: no password needed. Choose a role to see the app from
-            that side.
+            Use your IslandFix account, or tap a demo account below.
           </Text>
 
           <ControlledInput
-            testID="name-input"
+            testID="email-input"
             control={control}
-            name="name"
-            label="Your name"
-            placeholder="e.g. Aisha"
-            autoCapitalize="words"
-            accessibilityLabel="Your name"
+            name="email"
+            label="Email"
+            placeholder="you@islandfix.mv"
+            keyboardType="email-address"
+            autoComplete="email"
+            accessibilityLabel="Email"
           />
-
-          <Text className="mb-2 mt-3 text-lg">I am using the app as</Text>
-          <Controller
+          <ControlledInput
+            testID="password-input"
             control={control}
-            name="accountType"
-            render={({field: {value, onChange}, fieldState}) => (
-              <View accessibilityRole="radiogroup">
-                {ACCOUNT_TYPES.map(t => (
-                  <ChoiceChip
-                    key={t.value}
-                    testID={`account-${t.value}`}
-                    icon={t.icon}
-                    label={t.label}
-                    hint={t.hint}
-                    selected={value === t.value}
-                    onPress={() => onChange(t.value)}
-                  />
-                ))}
-                {fieldState.error && (
-                  <Text className="text-sm text-danger-600">
-                    {fieldState.error.message}
-                  </Text>
-                )}
-              </View>
-            )}
+            name="password"
+            label="Password"
+            placeholder="••••••••"
+            secureTextEntry
+            accessibilityLabel="Password"
           />
 
           <Button
             testID="login-button"
-            label="Continue"
+            label="Sign in"
             size="lg"
-            className="mt-6"
-            onPress={handleSubmit(onSubmit)}
+            className="mt-4"
+            onPress={handleSubmit(submit)}
           />
+
+          {/* Demo accounts: makes testing and marking easier */}
+          <Text className="mb-2 mt-8 text-xs font-bold uppercase tracking-wide text-neutral-500">
+            Demo accounts
+          </Text>
+          {DEMO_ACCOUNTS.map(a => (
+            <Pressable
+              key={a.id}
+              testID={`demo-${a.id}`}
+              onPress={() => fillDemo(a.email, a.password)}
+              accessibilityRole="button"
+              accessibilityLabel={`Use demo account ${a.name}`}
+              className="mb-2 flex-row items-center rounded-xl border border-neutral-200 bg-white px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900">
+              <View className="flex-1">
+                <Text className="font-semibold">
+                  {a.name} · {a.role === 'citizen' ? 'Citizen' : AGENCIES[a.agency!].shortName}
+                </Text>
+                <Text className="text-xs text-neutral-500">
+                  {a.email} / {a.password}
+                </Text>
+              </View>
+              <Text className="text-sm text-blue-600">Use</Text>
+            </Pressable>
+          ))}
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
