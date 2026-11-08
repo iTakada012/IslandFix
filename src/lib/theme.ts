@@ -1,8 +1,5 @@
-import type { Theme } from '@react-navigation/native';
-import {
-  DarkTheme as _DarkTheme,
-  DefaultTheme,
-} from '@react-navigation/native';
+import type {Theme} from '@react-navigation/native';
+import {DarkTheme as _DarkTheme, DefaultTheme} from '@react-navigation/native';
 
 import colors from '@/components/ui/colors';
 
@@ -26,4 +23,3 @@ export const LightTheme: Theme = {
     background: colors.white,
   },
 };
-

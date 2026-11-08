@@ -1,8 +1,8 @@
 import React from 'react';
-import type { SvgProps } from 'react-native-svg';
-import Svg, { G, Path, Text, TSpan } from 'react-native-svg';
+import type {SvgProps} from 'react-native-svg';
+import Svg, {G, Path, Text, TSpan} from 'react-native-svg';
 
-export const Language = ({ ...props }: SvgProps) => (
+export const Language = ({...props}: SvgProps) => (
   <Svg width={100} height={71} {...props}>
     <G fill="none" fillRule="evenodd">
       <Path
@@ -22,8 +22,7 @@ export const Language = ({ ...props }: SvgProps) => (
         fontSize={30}
         fontWeight="bold"
         fill="#FFF"
-        transform="translate(0 -4)"
-      >
+        transform="translate(0 -4)">
         <TSpan x={59} y={42}>
           ي
         </TSpan>

@@ -1,52 +1,45 @@
-import { makeAutoObservable } from 'mobx';
-import { makePersistable, hydrateStore, stopPersisting } from 'mobx-persist-store';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {makeAutoObservable} from 'mobx';
+import {makePersistable, hydrateStore} from 'mobx-persist-store';
 
-export type TokenType = {
-  access: string;
-  refresh: string;
-};
+import type {AppUser} from '@/lib/reports';
 
 export type AuthStatus = 'idle' | 'signOut' | 'signIn';
 
+/**
+ * AuthStore keeps track of who is using the app.
+ * There is no real backend: "signing in" stores the chosen name and role
+ * locally (persisted with AsyncStorage) so the session survives restarts.
+ */
 export class AuthStore {
-  token: TokenType | null = null;
+  user: AppUser | null = null;
   status: AuthStatus = 'idle';
   isFirstTime = true;
 
   constructor() {
     makeAutoObservable(this);
-    
-    // Configure automatic persistence
+
     makePersistable(this, {
       name: 'AuthStore',
-      properties: ['token', 'status', 'isFirstTime'],
+      properties: ['user', 'status', 'isFirstTime'],
     });
   }
 
-  signIn(tokenData: TokenType) {
-    console.log('signIn called with:', tokenData);
-    this.token = tokenData;
+  signIn(user: AppUser) {
+    this.user = user;
     this.status = 'signIn';
-    console.log('Auth status set to signIn');
   }
 
   setIsFirstTime(value: boolean) {
     this.isFirstTime = value;
   }
 
-  async signOut() {
-    // Clear the persisted data from AsyncStorage
-    await AsyncStorage.removeItem('AuthStore');
-    
-    // Reset the store state
-    this.token = null;
+  /** Sign out but keep reports and settings. Onboarding is not shown again. */
+  signOut() {
+    this.user = null;
     this.status = 'signOut';
-    this.isFirstTime = true;
   }
 
   hydrate = async (): Promise<void> => {
     await hydrateStore(this);
   };
 }
-

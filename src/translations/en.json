@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Welcome to obytes app site"
+    "message": "Welcome to IslandFix"
   },
   "settings": {
     "about": "About",
@@ -27,7 +27,10 @@
     },
     "title": "Settings",
     "version": "Version",
-    "website": "Website"
+    "website": "Website",
+    "data": "Data",
+    "reset_demo": "Reset demo data",
+    "reports_saved": "Reports on this device"
   },
-  "welcome": "Welcome to obytes app site"
+  "welcome": "Welcome to IslandFix"
 }

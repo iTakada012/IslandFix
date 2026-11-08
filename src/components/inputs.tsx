@@ -1,15 +1,15 @@
 import React from 'react';
 
-import type { OptionType } from '@/components/ui';
-import { Input, Select, View } from '@/components/ui';
-import { Checkbox, Radio, Switch } from '@/components/ui';
+import type {OptionType} from '@/components/ui';
+import {Input, Select, View} from '@/components/ui';
+import {Checkbox, Radio, Switch} from '@/components/ui';
 
-import { Title } from './title';
+import {Title} from './title';
 
 const options: OptionType[] = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+  {value: 'chocolate', label: 'Chocolate'},
+  {value: 'strawberry', label: 'Strawberry'},
+  {value: 'vanilla', label: 'Vanilla'},
 ];
 
 export const Inputs = () => {
@@ -25,7 +25,7 @@ export const Inputs = () => {
           label="Select"
           options={options}
           value={value}
-          onSelect={(option) => setValue(option)}
+          onSelect={option => setValue(option)}
         />
         <CheckboxExample />
         <RadioExample />
@@ -42,8 +42,7 @@ const CheckboxExample = () => {
       checked={checked}
       onChange={setChecked}
       accessibilityLabel="accept terms of condition"
-      className="pb-2"
-    >
+      className="pb-2">
       <Checkbox.Icon checked={checked} />
       <Checkbox.Label text="checkbox" />
     </Checkbox.Root>
@@ -57,8 +56,7 @@ const RadioExample = () => {
       checked={selected}
       onChange={setSelected}
       accessibilityLabel="radio button"
-      className="pb-2"
-    >
+      className="pb-2">
       <Radio.Icon checked={selected} />
       <Radio.Label text="radio button" />
     </Radio.Root>
@@ -72,8 +70,7 @@ const SwitchExample = () => {
       checked={active}
       onChange={setActive}
       accessibilityLabel="switch"
-      className="pb-2"
-    >
+      className="pb-2">
       <Switch.Icon checked={active} />
       <Switch.Label text="switch" />
     </Switch.Root>

@@ -28,3 +28,6 @@ android
 
 expo-env.d.ts
 # @end expo-cli
+# build checks
+dist-check/
+coverage/

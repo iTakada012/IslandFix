@@ -1,11 +1,11 @@
 import '../../global.css';
 
-import { Stack, SplashScreen } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { hydrateStores } from '@/stores';
-import { Providers } from './providers';
+import {Stack, SplashScreen} from 'expo-router';
+import {useEffect, useState} from 'react';
+import {hydrateStores} from '@/stores';
+import {Providers} from './providers';
 
-// Prevent the splash screen from auto-hiding
+// Keep the splash screen visible until saved data is loaded
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -14,12 +14,12 @@ export default function RootLayout() {
   useEffect(() => {
     const initializeApp = async () => {
       try {
-        // Hydrate all stores from AsyncStorage
+        // Load all persisted stores (auth, reports, theme, language) from AsyncStorage
         await hydrateStores();
-        setIsHydrated(true);
       } catch (error) {
         console.error('Failed to hydrate stores:', error);
-        setIsHydrated(true); // Continue anyway
+      } finally {
+        setIsHydrated(true); // continue even if loading failed
       }
     };
 
@@ -28,31 +28,32 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (isHydrated) {
-      // Hide splash screen once the app is ready
-      const hideSplash = async () => {
-        await SplashScreen.hideAsync();
-      };
-      
-      // Small delay to ensure smooth transition
-      setTimeout(() => {
-        hideSplash();
-      }, 500);
+      const timer = setTimeout(() => {
+        SplashScreen.hideAsync();
+      }, 300);
+      return () => clearTimeout(timer);
     }
   }, [isHydrated]);
 
   if (!isHydrated) {
-    return null; // or a loading screen
+    return null;
   }
 
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="(app)" options={{headerShown: false}} />
+        <Stack.Screen name="(auth)/onboarding" options={{headerShown: false}} />
+        <Stack.Screen name="(auth)/login" options={{headerShown: false}} />
+        <Stack.Screen
+          name="report/new"
+          options={{title: 'New report', presentation: 'modal'}}
+        />
+        <Stack.Screen
+          name="report/[id]"
+          options={{title: 'Report', headerBackTitle: 'Back'}}
+        />
       </Stack>
     </Providers>
   );
 }
-
-

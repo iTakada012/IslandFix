@@ -5,14 +5,14 @@ import type {
   Path,
   RegisterOptions,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
-import type { TextInputProps } from 'react-native';
-import { I18nManager, StyleSheet, View } from 'react-native';
-import { TextInput as NTextInput } from 'react-native';
-import { tv } from 'tailwind-variants';
+import {useController} from 'react-hook-form';
+import type {TextInputProps} from 'react-native';
+import {I18nManager, StyleSheet, View} from 'react-native';
+import {TextInput as NTextInput} from 'react-native';
+import {tv} from 'tailwind-variants';
 
 import colors from './colors';
-import { Text } from './text';
+import {Text} from './text';
 
 const inputTv = tv({
   slots: {
@@ -60,7 +60,7 @@ type TRule<T extends FieldValues> =
     >
   | undefined;
 
-export type RuleType<T extends FieldValues> = { [name in keyof T]: TRule<T> };
+export type RuleType<T extends FieldValues> = {[name in keyof T]: TRule<T>};
 export type InputControllerType<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
@@ -72,7 +72,7 @@ interface ControlledInputProps<T extends FieldValues>
     InputControllerType<T> {}
 
 export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
-  const { label, error, testID, ...inputProps } = props;
+  const {label, error, testID, ...inputProps} = props;
   const [isFocussed, setIsFocussed] = React.useState(false);
   const onBlur = React.useCallback(() => setIsFocussed(false), []);
   const onFocus = React.useCallback(() => setIsFocussed(true), []);
@@ -84,7 +84,7 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
         focused: isFocussed,
         disabled: Boolean(props.disabled),
       }),
-    [error, isFocussed, props.disabled]
+    [error, isFocussed, props.disabled],
   );
 
   return (
@@ -92,8 +92,7 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
       {label && (
         <Text
           testID={testID ? `${testID}-label` : undefined}
-          className={styles.label()}
-        >
+          className={styles.label()}>
           {label}
         </Text>
       )}
@@ -106,16 +105,15 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
         onFocus={onFocus}
         {...inputProps}
         style={StyleSheet.flatten([
-          { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },
-          { textAlign: I18nManager.isRTL ? 'right' : 'left' },
+          {writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr'},
+          {textAlign: I18nManager.isRTL ? 'right' : 'left'},
           inputProps.style,
         ])}
       />
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-sm text-danger-400 dark:text-danger-600"
-        >
+          className="text-sm text-danger-400 dark:text-danger-600">
           {error}
         </Text>
       )}
@@ -125,11 +123,11 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
 
 // only used with react-hook-form
 export function ControlledInput<T extends FieldValues>(
-  props: ControlledInputProps<T>
+  props: ControlledInputProps<T>,
 ) {
-  const { name, control, rules, ...inputProps } = props;
+  const {name, control, rules, ...inputProps} = props;
 
-  const { field, fieldState } = useController({ control, name, rules });
+  const {field, fieldState} = useController({control, name, rules});
   return (
     <Input
       ref={field.ref}

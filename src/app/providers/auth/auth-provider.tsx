@@ -1,31 +1,37 @@
-import React, { createContext, useContext } from 'react';
-import { observer } from 'mobx-react-lite';
+import React, {createContext, useContext} from 'react';
+import {observer} from 'mobx-react-lite';
 
-import { stores, TokenType, AuthStatus } from '@/stores';
+import type {AppUser} from '@/lib/reports';
+import {stores, AuthStatus} from '@/stores';
 
 interface AuthState {
-  token: TokenType | null;
+  user: AppUser | null;
   status: AuthStatus;
   isFirstTime: boolean;
-  signIn: (data: TokenType) => void;
-  signOut: () => Promise<void>;
+  signIn: (user: AppUser) => void;
+  signOut: () => void;
   setIsFirstTime: (value: boolean) => void;
 }
 
 const AuthContext = createContext<AuthState | null>(null);
 
-export const AuthProvider = observer(({ children }: { children: React.ReactNode }) => {
-  const value: AuthState = {
-    token: stores.auth.token,
-    status: stores.auth.status,
-    isFirstTime: stores.auth.isFirstTime,
-    signIn: (data) => stores.auth.signIn(data),
-    signOut: () => stores.auth.signOut(),
-    setIsFirstTime: (value) => stores.auth.setIsFirstTime(value),
-  };
+/** Exposes the AuthStore through React context (used by screens and layouts). */
+export const AuthProvider = observer(
+  ({children}: {children: React.ReactNode}) => {
+    const value: AuthState = {
+      user: stores.auth.user,
+      status: stores.auth.status,
+      isFirstTime: stores.auth.isFirstTime,
+      signIn: user => stores.auth.signIn(user),
+      signOut: () => stores.auth.signOut(),
+      setIsFirstTime: value => stores.auth.setIsFirstTime(value),
+    };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-});
+    return (
+      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    );
+  },
+);
 
 export function useAuth() {
   const context = useContext(AuthContext);

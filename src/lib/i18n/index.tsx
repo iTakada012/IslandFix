@@ -1,17 +1,20 @@
 import * as Localization from 'expo-localization';
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import { I18nManager } from 'react-native';
+import {initReactI18next} from 'react-i18next';
+import {I18nManager} from 'react-native';
 
-import { stores } from '@/stores';
-import { resources } from './resources';
+import {stores} from '@/stores';
+import {resources} from './resources';
 
-export type { TxKeyPath } from './types';
+export type {TxKeyPath} from './types';
 
 // Initialize i18next
 i18n.use(initReactI18next).init({
   resources,
-  lng: stores.uiLanguage.language || Localization.getLocales()[0]?.languageCode || 'en',
+  lng:
+    stores.uiLanguage.language ||
+    Localization.getLocales()[0]?.languageCode ||
+    'en',
   fallbackLng: 'en',
   compatibilityJSON: 'v4',
   interpolation: {

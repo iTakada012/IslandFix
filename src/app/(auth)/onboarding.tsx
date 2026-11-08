@@ -1,7 +1,6 @@
-import { useRouter } from 'expo-router';
+import {useRouter} from 'expo-router';
 import React from 'react';
 
-import { Cover } from '@/components/cover';
 import {
   Button,
   FocusAwareStatusBar,
@@ -9,49 +8,52 @@ import {
   Text,
   View,
 } from '@/components/ui';
+import {useAuth} from '@/app/providers/auth/auth-provider';
 
-import { useAuth } from '@/app/providers/auth/auth-provider';
+const POINTS = [
+  {icon: '📸', text: 'Snap a photo of a broken street light, leak or pothole'},
+  {icon: '🧭', text: 'We send it to the right agency: Council, STELCO or MWSC'},
+  {icon: '🔔', text: 'Follow progress until it is fixed'},
+  {icon: '📴', text: 'Works offline: your reports are saved on your phone'},
+];
 
+/** Shown once on first launch. */
 export default function Onboarding() {
-  const { setIsFirstTime } = useAuth();
+  const {setIsFirstTime} = useAuth();
   const router = useRouter();
 
   return (
-    <View className="flex h-full items-center justify-center">
+    <SafeAreaView className="flex-1 bg-white dark:bg-black">
       <FocusAwareStatusBar />
-      <View className="w-full flex-1">
-        <Cover />
-      </View>
-      <View className="justify-end ">
-        <Text className="my-3 text-center text-5xl font-bold">
-          Villa Starter
-        </Text>
-        <Text className="mb-2 text-center text-lg text-gray-600">
-          The right way to build your mobile app
+      <View className="flex-1 justify-center px-6">
+        <View className="mb-6 size-24 items-center justify-center self-center rounded-3xl bg-blue-600">
+          <Text className="text-5xl">🏝️</Text>
+        </View>
+        <Text className="text-center text-4xl font-bold">IslandFix</Text>
+        <Text className="mb-8 mt-2 text-center text-lg text-neutral-500">
+          Report local problems. Get them fixed.
         </Text>
 
-        <Text className="my-1 pt-6 text-left text-lg">
-          🚀 Production-ready{' '}
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🥷 Developer experience + Productivity
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🧩 Minimal code and dependencies
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          💪 well maintained third-party libraries
-        </Text>
+        {POINTS.map(p => (
+          <View key={p.icon} className="mb-4 flex-row items-center">
+            <Text className="mr-4 text-3xl">{p.icon}</Text>
+            <Text className="flex-1 text-base">{p.text}</Text>
+          </View>
+        ))}
       </View>
-      <SafeAreaView className="mt-6">
+      <View className="px-6 pb-6">
         <Button
-          label="Let's Get Started "
-          onPress={async () => {
-            await setIsFirstTime(false);
-            router.replace('/login');
+          testID="get-started"
+          label="Get started"
+          size="lg"
+          className="bg-blue-600 dark:bg-blue-600"
+          textClassName="text-white dark:text-white"
+          onPress={() => {
+            setIsFirstTime(false);
+            router.replace('/login' as any);
           }}
         />
-      </SafeAreaView>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 }

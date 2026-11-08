@@ -1,5 +1,5 @@
 //  https://github.com/infinitered/ignite/blob/master/boilerplate/app/i18n/i18n.ts
-import { resources } from './resources';
+import {resources} from './resources';
 
 export type RecursiveKeyOf<TObj extends object> = {
   [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<

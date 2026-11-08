@@ -3,7 +3,7 @@ import type {
   GetPreviousPageParamFunction,
 } from '@tanstack/react-query';
 
-import type { PaginateQuery } from '../types';
+import type {PaginateQuery} from '../types';
 
 type KeyParams = {
   [key: string]: any;
@@ -23,8 +23,8 @@ export function normalizePages<T>(pages?: PaginateQuery<T>[]): T[] {
 
 // a function that accept a url and return params as an object
 export function getUrlParameters(
-  url: string | null
-): { [k: string]: string } | null {
+  url: string | null,
+): {[k: string]: string} | null {
   if (url === null) {
     return null;
   }
@@ -43,9 +43,9 @@ export function getUrlParameters(
 export const getPreviousPageParam: GetNextPageParamFunction<
   unknown,
   PaginateQuery<unknown>
-> = (page) => getUrlParameters(page.previous)?.offset ?? null;
+> = page => getUrlParameters(page.previous)?.offset ?? null;
 
 export const getNextPageParam: GetPreviousPageParamFunction<
   unknown,
   PaginateQuery<unknown>
-> = (page) => getUrlParameters(page.next)?.offset ?? null;
+> = page => getUrlParameters(page.next)?.offset ?? null;

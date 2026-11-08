@@ -2,14 +2,14 @@ import 'dotenv/config';
 
 export default {
   expo: {
-    name: "expo-go-villa-sample",
+    name: "IslandFix",
     slug: "expo-go-villa-sample",
     version: "1.0.0",
     scheme: "expo-go-villa-sample",
-    platforms: ["ios", "android"],
+    platforms: ["ios", "android", "web"],
     web: {
       bundler: "metro",
-      output: "static",
+      output: "single",
       favicon: "./assets/favicon.png"
     },
     plugins: [
@@ -22,7 +22,20 @@ export default {
           recordAudioAndroid: true
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          photosPermission: "Allow $(PRODUCT_NAME) to attach photos to your reports",
+          cameraPermission: "Allow $(PRODUCT_NAME) to take photos of problems you report"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          locationWhenInUsePermission: "Allow $(PRODUCT_NAME) to add your location to a report"
+        }
+      ]
     ],
     experiments: {
       typedRoutes: true,

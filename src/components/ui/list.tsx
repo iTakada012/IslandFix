@@ -1,16 +1,16 @@
-import { FlashList as NFlashList } from '@shopify/flash-list';
+import {FlashList as NFlashList} from '@shopify/flash-list';
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import {ActivityIndicator, View} from 'react-native';
+import Svg, {Circle, Path} from 'react-native-svg';
 
-import { Text } from './text';
+import {Text} from './text';
 type Props = {
   isLoading: boolean;
 };
 
 export const List = NFlashList;
 
-export const EmptyList = React.memo(({ isLoading }: Props) => {
+export const EmptyList = React.memo(({isLoading}: Props) => {
   return (
     <View className="min-h-[400px] flex-1 items-center justify-center">
       {!isLoading ? (

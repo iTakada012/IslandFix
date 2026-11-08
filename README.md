@@ -1,243 +1,205 @@
-# 📱 Expo Go Villa Sample - Mobile Development Learning Project
+# 🏝️ IslandFix: Civic Issue Reporting App
 
-Welcome to your first React Native mobile app! This project is designed to help you learn mobile development using Expo Go - no simulators or complex setup required, just your phone and some basic tools.
+IslandFix lets residents of a small island report local problems, such as a broken
+street light, a water leak or overflowing sewage, straight from their phone.
+Each report is **automatically routed to the agency responsible** for fixing it:
 
-## 🎯 What You'll Learn
+| Problem | Sent to | Copied in (for information) |
+|---|---|---|
+| Street light, power / wires | **STELCO** (electricity) | Island Council |
+| Water leak, sewage / drains | **MWSC** (water & sewerage) | Island Council |
+| No water supply | **MWSC** | none |
+| Roads, waste, public spaces, other | **Island Council** | none |
 
-- React Native fundamentals
-- Mobile UI components and styling with NativeWind (Tailwind CSS)
-- Navigation between screens
-- Form handling and validation
-- State management
-- Local storage
-- Internationalization (i18n)
-- Authentication flows
+Staff from each agency sign in to see an **inbox** of reports assigned to them,
+update the status (Acknowledged → In progress → Resolved, or Rejected) and leave
+notes that the citizen sees on a progress timeline.
 
-## 📋 Prerequisites
-
-Before you start, make sure you have:
-- A smartphone (iOS or Android)
-- A computer with internet connection
-- Both devices connected to the **same WiFi network**
-
-## 🛠️ Installation Guide
-
-### Step 1: Install Node.js
-1. Go to [nodejs.org](https://nodejs.org/)
-2. Download and install the **LTS version** (recommended)
-3. Verify installation by opening terminal/command prompt and typing:
-   ```bash
-   node --version
-   npm --version
-   ```
-
-### Step 2: Install Yarn (Package Manager)
-```bash
-npm install -g yarn
-```
-Verify installation:
-```bash
-yarn --version
-```
-
-### Step 3: Install Expo CLI
-```bash
-npm install -g @expo/cli
-```
-
-### Step 4: Install Expo Go App on Your Phone
-
-#### For iOS:
-- Open App Store
-- Search for "Expo Go"
-- Install the app
-
-#### For Android:
-- Open Google Play Store
-- Search for "Expo Go"
-- Install the app
-
-## 🚀 Getting Started
-
-### 1. Clone/Download This Project
-```bash
-# Clone the repository
-git clone https://github.com/Yasir5247/RN-ExpoGo-Villa-Sample.git
-cd RN-ExpoGo-Villa-Sample
-
-# Or download the ZIP file from GitHub and extract it
-```
-
-**Alternative: Download ZIP**
-1. Go to [https://github.com/Yasir5247/RN-ExpoGo-Villa-Sample](https://github.com/Yasir5247/RN-ExpoGo-Villa-Sample)
-2. Click the green "Code" button
-3. Select "Download ZIP"
-4. Extract the downloaded file
-
-### 2. Install Dependencies
-```bash
-yarn install
-```
-
-### 3. Start the Development Server
-```bash
-yarn start
-```
-
-You should see something like this:
-```
-Starting Metro Bundler
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-█ ▄▄▄▄▄ █▄▄▄ ▀█▄█▄█ ▄▄▄▄▄ █
-█ █   █ ██▄▀ █ ▀▄▄█ █   █ █
-█ █▄▄▄█ ██▀▄ ▄███▀█ █▄▄▄█ █
-▄▄▄▄▄▄▄█ ▀▄█ ▀▄█▄█▄▄▄▄▄▄▄█
-...
-
-› Metro waiting on exp://192.168.x.x:8081
-› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
-```
-
-### 4. Open the App on Your Phone
-
-#### For iOS:
-1. Open the **Camera** app
-2. Point it at the QR code on your computer screen
-3. Tap the notification that appears
-4. The app will open in Expo Go
-
-#### For Android:
-1. Open the **Expo Go** app
-2. Tap "Scan QR Code"
-3. Point your camera at the QR code on your computer screen
-4. The app will load automatically
-
-## 🔧 Development Commands
-
-```bash
-# Start the development server
-yarn start
-
-# Start with iOS simulator (if you have Xcode installed)
-yarn ios
-
-# Start with Android emulator (if you have Android Studio installed)
-yarn android
-
-# Start web version
-yarn web
-
-# Run linting
-yarn lint
-
-# Format code
-yarn format
-```
-
-## 📱 Features in This App
-
-### 🎨 UI Components
-- **Buttons**: Various styles and states
-- **Forms**: Login form with validation
-- **Cards**: Display content beautifully
-- **Navigation**: Tab navigation and stack navigation
-- **Modals**: Bottom sheets and overlays
-
-### 🎯 Functionality
-- **Authentication**: Login/logout flow
-- **Storage**: Persistent data storage
-- **Theming**: Light/dark mode support
-- **Internationalization**: Multi-language support
-- **Form Validation**: Using Zod and React Hook Form
-
-### 🛠️ Technologies Used
-- **React Native**: Mobile app framework
-- **Expo**: Development platform
-- **NativeWind**: Tailwind CSS for React Native
-- **Expo Router**: File-based navigation
-- **React Hook Form**: Form handling
-- **Zod**: Schema validation
-- **AsyncStorage**: Local data storage
-
-## 🐛 Troubleshooting
-
-### App Won't Load?
-1. **Check WiFi**: Ensure both devices are on the same network
-2. **Restart Metro**: Press `r` in the terminal to reload
-3. **Clear Cache**: Press `Shift + r` for a full reload
-4. **Restart Expo Go**: Close and reopen the Expo Go app
-
-### QR Code Not Working?
-1. **Manual Connection**: In Expo Go, tap "Enter URL manually" and type the URL shown in terminal
-2. **Network Issues**: Try connecting to a different WiFi network
-3. **Firewall**: Check if your computer's firewall is blocking the connection
-
-### Development Server Issues?
-```bash
-# Clear Expo cache
-expo start --clear
-
-# Reset Metro cache
-yarn start --reset-cache
-```
-
-## 📚 Learning Path
-
-### Beginner Level
-1. **Explore the UI**: Navigate through different screens
-2. **Modify Text**: Change some text content and see live updates
-3. **Styling**: Experiment with NativeWind classes
-4. **Components**: Look at how components are structured
-
-### Intermediate Level
-1. **Add New Screens**: Create additional pages
-2. **Form Handling**: Build new forms with validation
-3. **State Management**: Add new features with local state
-4. **Storage**: Implement data persistence
-
-### Advanced Level
-1. **API Integration**: Connect to external services
-2. **Custom Components**: Build reusable UI components
-3. **Performance**: Optimize app performance
-4. **Testing**: Add unit and integration tests
-
-## 📖 File Structure
-
-```
-src/
-├── app/                    # App screens (file-based routing)
-│   ├── (app)/             # Protected app screens
-│   ├── login.tsx          # Login screen
-│   ├── onboarding.tsx     # Onboarding screen
-│   └── _layout.tsx        # Root layout
-├── components/            # Reusable UI components
-│   ├── ui/               # Base UI components
-│   └── ...               # Feature components
-├── lib/                  # Utilities and configurations
-│   ├── auth/             # Authentication logic
-│   ├── hooks/            # Custom React hooks
-│   ├── i18n/             # Internationalization
-│   └── storage.tsx       # Local storage utilities
-└── translations/         # Language files
-```
-
-## 🤝 Getting Help
-
-1. **Read the Code**: Comments explain what each part does
-2. **Expo Documentation**: [docs.expo.dev](https://docs.expo.dev)
-3. **React Native Docs**: [reactnative.dev](https://reactnative.dev)
-4. **Ask Questions**: Don't hesitate to ask your instructor
-
-## 🎉 Next Steps
-
-Once you're comfortable with this project:
-1. Try building your own screens
-2. Add new features
-3. Experiment with different UI components
-4. Build your own app from scratch
+The island, agencies and reports are a hypothetical scenario built for the
+Mobile Applications module (UFCF7H-15-3). The app runs fully **offline**. All
+data is stored on the device.
 
 ---
 
-**Happy Coding! 🚀**
+## 📲 Installation & Run Instructions
 
-*Remember: The best way to learn is by doing. Don't be afraid to break things - that's how you learn!*
+### Requirements
+- **Node.js 20 or 22 LTS** and **Yarn 1.x** (`npm install -g yarn`)
+- **Expo Go for SDK 53** on your phone. The Play Store / App Store version may
+  be newer. On Android, install the SDK 53 build from <https://expo.dev/go>.
+  On a Mac, the iOS Simulator (Xcode) installs the right version automatically.
+- Phone and computer on the same Wi-Fi network
+
+### Run
+```bash
+git clone <this-repository-url>
+cd <repository-folder>
+yarn install
+yarn start
+```
+Then scan the QR code with **Expo Go** (Android) or the Camera app (iOS).
+
+Other commands:
+
+| Command | What it does |
+|---|---|
+| `yarn ios` / `yarn android` | Open in iOS Simulator / Android emulator |
+| `yarn web` | Run in a web browser |
+| `yarn test` | Run the unit tests (Jest) |
+| `yarn typecheck` | TypeScript type check |
+| `yarn lint` | ESLint + Prettier check |
+| `npx expo start --tunnel` | Use if your Wi-Fi blocks phone ↔ computer connections |
+
+### Trying it out
+1. Tap **Get started** and sign in as a **Citizen** (any name, no password).
+2. Tap **+ Report a problem**, pick *Street light*, describe it, optionally add a
+   photo and your location, then **Send report**.
+3. Go to **Profile → Sign out**, sign in again as **STELCO** staff, open the
+   report from the inbox and mark it **Acknowledged** with a note.
+4. Sign back in as the citizen with the same name to see the updated timeline.
+
+Sample reports are added on first launch. **Settings → Reset demo data** restores them.
+
+---
+
+## ✨ Feature List
+
+| Feature | Description |
+|---|---|
+| **Role-based sign in** | Choose Citizen, Island Council, STELCO or MWSC. The tabs, lists and allowed actions change by role. |
+| **Report a problem** | Category grid, description and landmark with validation (React Hook Form + Zod), optional photo (camera or gallery) and GPS location. |
+| **Automatic routing** | The app picks the lead agency and copied agencies from the category and previews it *before* sending ("This will be sent to STELCO, with a copy to Council"). |
+| **Address lookup (public API)** | GPS coordinates are turned into a readable address using the free **OpenStreetMap Nominatim** API, with loading, timeout and offline error states. The report still saves without it. |
+| **Citizen lists** | *My reports* and *Community* (everything on the island), filtered by Open / Closed / All. |
+| **Agency inbox** | *Assigned to us* (agency must act) and *For info (CC)* (agency is copied in, read only). |
+| **Status workflow** | Lead agency staff move reports through Submitted → Acknowledged → In progress → Resolved, or Reject them (with confirmation). Invalid jumps are blocked. |
+| **Progress timeline** | Every status change is recorded with who made it, when, and an optional note. |
+| **Withdraw report** | Citizens can delete their own report while it is still *Submitted* (with confirmation). |
+| **Offline persistence** | Reports, the signed-in user, theme and language are saved with AsyncStorage and survive app restarts. Photos are copied into the app's permanent storage. |
+| **Profile** | User details and counts of total / open / resolved reports. |
+| **Settings** | Light / dark / system theme, language, reports count, reset demo data, sign out. |
+| **Accessibility** | Large touch targets (≥ 48 px), screen-reader labels and roles on cards, chips and tabs, colour-coded status badges that also include text. |
+
+---
+
+## 📸 Screenshots
+
+| Onboarding | Sign in (choose role) | Community reports |
+|---|---|---|
+| ![Onboarding](docs/screenshots/01-onboarding.png) | ![Sign in](docs/screenshots/02-login.png) | ![Community](docs/screenshots/04-community.png) |
+
+| New report (validation) | New report (routing preview) | Report details |
+|---|---|---|
+| ![Validation](docs/screenshots/05-new-report-validation.png) | ![New report](docs/screenshots/06-new-report-filled.png) | ![Details](docs/screenshots/07-report-details.png) |
+
+| STELCO inbox | Staff status update | Timeline after update |
+|---|---|---|
+| ![Inbox](docs/screenshots/10-stelco-inbox.png) | ![Update](docs/screenshots/11-staff-update.png) | ![Timeline](docs/screenshots/12-after-ack.png) |
+
+| Profile | Settings |
+|---|---|
+| ![Profile](docs/screenshots/09-profile.png) | ![Settings](docs/screenshots/14-settings.png) |
+
+> Replace these with screenshots from your phone / simulator if you prefer.
+
+### Navigation flow
+```
+Onboarding (first launch only)
+   └─► Sign in (choose role)
+          └─► Bottom tabs
+                ├─ Reports / Inbox ──► Report details ──► (staff) update status
+                │        └─────────► New report (modal) ──► Report details
+                ├─ Profile ──► Sign out ──► Sign in
+                └─ Settings (theme, language, reset data, logout)
+```
+Navigation uses **Expo Router** (file-based): a root **stack**, a **tab** navigator
+for signed-in users, a **modal** for the new-report form, and redirect guards for
+onboarding and sign in.
+
+---
+
+## 🛠️ Technologies Used
+
+| Area | Technology |
+|---|---|
+| Framework | React Native 0.79, Expo SDK 53, TypeScript |
+| Navigation | Expo Router 5 (stack, tabs, modal) |
+| State management | MobX + mobx-react-lite (stores in `src/stores`) |
+| Persistence | mobx-persist-store + AsyncStorage, expo-file-system for photos |
+| Forms & validation | React Hook Form + Zod |
+| Styling | NativeWind (Tailwind CSS for React Native), light/dark themes |
+| Device features | expo-image-picker (camera/gallery), expo-location (GPS) |
+| Public API | OpenStreetMap Nominatim reverse geocoding (no key needed) |
+| Feedback | react-native-flash-message |
+| Testing | Jest + jest-expo |
+| Starter template | [RN-ExpoGo-Villa-Sample](https://github.com/Yasir5247/RN-ExpoGo-Villa-Sample) |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                       # Screens (file-based routing)
+│   ├── _layout.tsx            # Root stack + loading saved data
+│   ├── (auth)/onboarding.tsx  # First-launch intro
+│   ├── (auth)/login.tsx       # Role-based sign in
+│   ├── (app)/_layout.tsx      # Bottom tabs + auth guards
+│   ├── (app)/index.tsx        # Reports list / agency inbox
+│   ├── (app)/profile.tsx
+│   ├── (app)/settings.tsx
+│   ├── report/new.tsx         # New report form (modal)
+│   └── report/[id].tsx        # Report details, timeline, staff actions
+├── components/
+│   ├── reports/               # ReportCard, badges, segmented control, etc.
+│   └── ui/                    # Base UI kit from the template
+├── lib/reports/
+│   ├── config.ts              # Agencies, categories, ROUTING RULES
+│   ├── logic.ts               # Pure business logic (tested)
+│   ├── geocode.ts             # Nominatim API call + error handling
+│   ├── media.ts               # Camera, gallery, GPS helpers
+│   └── __tests__/             # Unit tests
+└── stores/
+    ├── auth-store.ts          # Signed-in user + role (persisted)
+    ├── reports-store.ts       # All reports (persisted)
+    ├── seed-reports.ts        # Demo data
+    └── __tests__/
+```
+
+---
+
+## 🧪 Testing & Error Handling
+
+- **26 unit tests** (`yarn test`) cover routing rules, status transitions,
+  permissions, list filtering, sorting, helpers and the reports store.
+- **Form validation:** inline messages for missing category or a too-short
+  description, and for the sign-in name.
+- **Permissions:** friendly messages if camera, photo or location access is denied.
+- **Network:** address lookup has a timeout and separate messages for offline,
+  server errors and "no address found". The report still saves with coordinates.
+- **Confirmations** before rejecting or withdrawing a report.
+- Tested on Android (Expo Go), iOS Simulator and web.
+
+---
+
+## 🐞 Known Issues & Future Improvements
+
+- **Single device only:** there is no backend, so reports are not shared between
+  phones. Roles are demonstrated by signing out and in on the same device. A
+  backend (e.g. Supabase or Firebase) would allow real multi-user use and
+  push notifications.
+- **No real authentication:** sign in is a demo (name + role, no password).
+- **Map view:** reports show an "Open in Maps" link; an in-app map of nearby
+  reports would help staff.
+- **Translations:** new screens are in English only; full Dhivehi (RTL)
+  translation is planned.
+- Nominatim is a free community service with rate limits; a production app
+  should use its own geocoding provider.
+
+---
+
+## 💭 Reflection
+
+*(Write this section in your own words: what went well, what was difficult,
+what you learned about React Native / Expo, and what you would do differently.
+Link to findings from your user testing report.)*

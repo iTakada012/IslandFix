@@ -1,23 +1,23 @@
 import React from 'react';
 
-import { Text, View } from '@/components/ui';
+import {Text, View} from '@/components/ui';
 import colors from '@/components/ui/colors';
 
-import { Title } from './title';
+import {Title} from './title';
 type ColorName = keyof typeof colors;
 
 export const Colors = () => {
   return (
     <>
       <Title text="Colors" />
-      {(Object.keys(colors) as ColorName[]).map((name) => (
+      {(Object.keys(colors) as ColorName[]).map(name => (
         <Color name={name} key={name} />
       ))}
     </>
   );
 };
 
-const Color = ({ name }: { name: ColorName }) => {
+const Color = ({name}: {name: ColorName}) => {
   if (typeof colors[name] === 'string') return null;
   return (
     <View className="pt-2">
@@ -37,12 +37,12 @@ const Color = ({ name }: { name: ColorName }) => {
   );
 };
 
-const ColorCard = ({ color, value }: { value: string; color: string }) => {
+const ColorCard = ({color, value}: {value: string; color: string}) => {
   return (
     <View className="flex-1">
       <View
         className="h-14 w-full rounded-sm"
-        style={{ backgroundColor: color }}
+        style={{backgroundColor: color}}
       />
       <Text className="text-sm">{value}</Text>
     </View>
