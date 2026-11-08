@@ -6,6 +6,7 @@ import type {IconName} from '@/lib/reports';
 import {
   Button,
   FocusAwareStatusBar,
+  Image,
   SafeAreaView,
   Text,
   View,
@@ -28,9 +29,11 @@ export default function Onboarding() {
     <SafeAreaView className="flex-1 bg-white dark:bg-black">
       <FocusAwareStatusBar />
       <View className="flex-1 justify-center px-6">
-        <View className="mb-6 size-24 items-center justify-center self-center rounded-3xl bg-blue-600">
-          <AppIcon name="island" size={56} color="#ffffff" />
-        </View>
+        <Image
+          source={require('../../../assets/icon.png')}
+          className="mb-6 size-24 self-center rounded-3xl"
+          accessibilityLabel="IslandFix logo"
+        />
         <Text className="text-center text-4xl font-bold">IslandFix</Text>
         <Text className="mb-8 mt-2 text-center text-lg text-neutral-500">
           Report local problems. Get them fixed.
