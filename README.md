@@ -4,32 +4,32 @@
 
 IslandFix is a React Native (Expo) app that lets residents of a small island
 report local problems, such as a broken street light, a water leak or
-overflowing sewage, from their phone. Each report is **automatically routed to
-the agency responsible for fixing it**, and other agencies are copied in so
+overflowing sewage, from their phone. Each report is automatically routed to
+the agency responsible for fixing it, and other agencies are copied in so
 they stay informed.
 
 | Problem | Sent to (lead agency) | Copied in (for information) |
 |---|---|---|
-| Street light, power / wires | **STELCO** (electricity) | Island Council |
-| Water leak, sewage / drains | **MWSC** (water and sewerage) | Island Council |
-| No water supply | **MWSC** | none |
-| Roads, waste, public spaces, other | **Island Council** | none |
+| Street light, power / wires | STELCO (electricity) | Island Council |
+| Water leak, sewage / drains | MWSC (water and sewerage) | Island Council |
+| No water supply | MWSC | none |
+| Roads, waste, public spaces, other | Island Council | none |
 
-Agency staff sign in to an **inbox** of reports assigned to them, move each one
+Agency staff sign in to an inbox of reports assigned to them, move each one
 through a status workflow (Submitted, Acknowledged, In progress, Resolved or
 Rejected) and add notes that the citizen sees on a progress timeline.
 
 The island, agencies and people in this app are a hypothetical scenario created
 for the Mobile Applications module (UFCF7H-15-3). The app works fully
-**offline**: all data is stored on the device.
+offline: all data is stored on the device.
 
 ---
 
 ## Installation and Run Instructions
 
 ### Requirements
-- **Node.js 20 or 22 LTS** and **Yarn 1.x** (`npm install -g yarn`)
-- **Expo Go for SDK 53** on a phone. The app store version of Expo Go may be
+- Node.js 20 or 22 LTS and Yarn 1.x (`npm install -g yarn`)
+- Expo Go for SDK 53 on a phone. The app store version of Expo Go may be
   newer than SDK 53. On Android, install the SDK 53 build from
   <https://expo.dev/go>. The iOS Simulator (Xcode) installs the correct version
   automatically.
@@ -42,7 +42,7 @@ cd IslandFix
 yarn install
 yarn start
 ```
-Scan the QR code with **Expo Go** (Android) or the Camera app (iOS).
+Scan the QR code with Expo Go (Android) or the Camera app (iOS).
 
 | Command | What it does |
 |---|---|
@@ -68,16 +68,16 @@ it in automatically.
 | Hawwa | MWSC staff | `mwsc@islandfix.mv` | `staff123` |
 
 ### Suggested walkthrough
-1. Tap **Get started** and sign in as **Aisha** (citizen).
-2. Tap **Report a problem**, choose *Street light*, add a description and,
+1. Tap Get started and sign in as Aisha (citizen).
+2. Tap Report a problem, choose *Street light*, add a description and,
    optionally, a photo and your location. The app shows who will receive the
    report before you send it.
-3. Go to **Profile > Sign out** and sign in as **Ali** (STELCO).
-4. Open the report from the inbox, add a note and tap **Mark as Acknowledged**.
+3. Go to Profile > Sign out and sign in as Ali (STELCO).
+4. Open the report from the inbox, add a note and tap Mark as Acknowledged.
 5. Sign back in as Aisha to see the updated progress timeline.
 
-Sample reports are added on first launch. **Settings > Reset demo data**
-restores them and **Settings > Delete all reports** empties the app.
+Sample reports are added on first launch. Settings > Reset demo data
+restores them and Settings > Delete all reports empties the app.
 
 ---
 
@@ -85,22 +85,22 @@ restores them and **Settings > Delete all reports** empties the app.
 
 | Feature | Description |
 |---|---|
-| **Email and password sign in** | Demo accounts for citizens and for each agency. Wrong details show "Incorrect email or password". The session is remembered after the app is closed. |
-| **Role-based app** | Citizens and staff see different tabs, lists and actions. Staff can only update reports their agency leads on. |
-| **Report a problem** | Category grid, description and optional landmark, validated with React Hook Form and Zod. Optional photo from the camera or gallery and optional GPS location. |
-| **Automatic routing** | The category decides the lead agency and copied agencies. The form previews this before sending ("This will be sent to STELCO, with a copy to Island Council"). |
-| **Address lookup (public API)** | GPS coordinates are turned into a readable address with the free **OpenStreetMap Nominatim** API, with loading, timeout and offline error messages. The report still saves without an address. |
-| **Citizen lists** | *My reports* and *Community* (everything reported on the island), filtered by Open, Closed or All. |
-| **Agency inbox** | *Assigned to us* (the agency must act) and *For info (CC)* (read only). |
-| **Status workflow** | Submitted, Acknowledged, In progress, Resolved, with Reject available before a report is resolved (with confirmation). Invalid status jumps are blocked. |
-| **Progress timeline** | Every status change is recorded with who made it, when, and an optional note for the citizen. |
-| **Withdraw report** | Citizens can delete their own report while it is still Submitted (with confirmation). |
-| **Offline persistence** | Reports, the signed-in user and the theme are saved with AsyncStorage and survive restarts. Photos are copied into the app's permanent storage. |
-| **Profile** | User details and counts of total, open and resolved reports. |
-| **Settings** | Light, dark or system theme; app information; reset demo data; delete all reports; sign out. |
-| **Dark mode** | Every screen supports light and dark themes, and the chosen theme is restored on startup. |
-| **Icons and branding** | Vector icons (MaterialCommunityIcons) colour-coded by agency, plus a custom app icon, Android adaptive icon and splash screen. |
-| **Accessibility** | Large touch targets, screen-reader labels and roles on buttons, cards, chips and tabs, and status badges that use text as well as colour. |
+| Email and password sign in | Demo accounts for citizens and for each agency. Wrong details show "Incorrect email or password". The session is remembered after the app is closed. |
+| Role-based app | Citizens and staff see different tabs, lists and actions. Staff can only update reports their agency leads on. |
+| Report a problem | Category grid, description and optional landmark, validated with React Hook Form and Zod. Optional photo from the camera or gallery and optional GPS location. |
+| Automatic routing | The category decides the lead agency and copied agencies. The form previews this before sending ("This will be sent to STELCO, with a copy to Island Council"). |
+| Address lookup (public API) | GPS coordinates are turned into a readable address with the free OpenStreetMap Nominatim API, with loading, timeout and offline error messages. The report still saves without an address. |
+| Citizen lists | *My reports* and *Community* (everything reported on the island), filtered by Open, Closed or All. |
+| Agency inbox | *Assigned to us* (the agency must act) and *For info (CC)* (read only). |
+| Status workflow | Submitted, Acknowledged, In progress, Resolved, with Reject available before a report is resolved (with confirmation). Invalid status jumps are blocked. |
+| Progress timeline | Every status change is recorded with who made it, when, and an optional note for the citizen. |
+| Withdraw report | Citizens can delete their own report while it is still Submitted (with confirmation). |
+| Offline persistence | Reports, the signed-in user and the theme are saved with AsyncStorage and survive restarts. Photos are copied into the app's permanent storage. |
+| Profile | User details and counts of total, open and resolved reports. |
+| Settings | Light, dark or system theme; app information; reset demo data; delete all reports; sign out. |
+| Dark mode | Every screen supports light and dark themes, and the chosen theme is restored on startup. |
+| Icons and branding | Vector icons (MaterialCommunityIcons) colour-coded by agency, plus a custom app icon, Android adaptive icon and splash screen. |
+| Accessibility | Large touch targets, screen-reader labels and roles on buttons, cards, chips and tabs, and status badges that use text as well as colour. |
 
 ---
 
@@ -137,8 +137,8 @@ Onboarding (first launch only)
             - Profile -> Sign out -> Sign in
             - Settings (theme, reset data, delete all reports, sign out)
 ```
-Navigation uses **Expo Router** (file-based routing): a root **stack**, a
-**tab** navigator for signed-in users, a **modal** for the new report form, and
+Navigation uses Expo Router (file-based routing): a root stack, a
+tab navigator for signed-in users, a modal for the new report form, and
 redirect guards that send users to onboarding or sign in when needed.
 
 ---
@@ -202,15 +202,15 @@ src/
 ## Testing and Debugging
 
 ### Automated tests
-`yarn test` runs **32 unit tests** with Jest:
-- **Routing rules:** each category goes to the correct lead and copied agencies.
-- **Status workflow:** allowed and blocked status changes.
-- **Permissions:** only lead agency staff can update a report; citizens can
+`yarn test` runs 32 unit tests with Jest:
+- Routing rules: each category goes to the correct lead and copied agencies.
+- Status workflow: allowed and blocked status changes.
+- Permissions: only lead agency staff can update a report; citizens can
   only withdraw their own untouched reports.
-- **Lists:** filtering by user, agency and status, and sorting by date.
-- **Sign in:** correct and wrong passwords, unknown emails, email case, and
+- Lists: filtering by user, agency and status, and sorting by date.
+- Sign in: correct and wrong passwords, unknown emails, email case, and
   that the password is never returned.
-- **Reports store:** adding, updating, removing and resetting reports.
+- Reports store: adding, updating, removing and resetting reports.
 
 ### Error handling
 - Inline validation messages on the sign-in and new report forms.
@@ -234,19 +234,19 @@ Android (Samsung, Expo Go SDK 53), iOS Simulator and web browser.
 
 ## Known Issues and Future Improvements
 
-- **Data stays on one device:** there is no backend, so reports are not shared
+- Data stays on one device: there is no backend, so reports are not shared
   between phones. Roles are demonstrated by signing out and in on the same
-  device. A future version will use **Supabase** (database, authentication and
+  device. A future version will use Supabase (database, authentication and
   photo storage) with the current local storage kept as an offline cache that
   syncs when the connection returns.
-- **Demo authentication only:** accounts are defined in the app and passwords
+- Demo authentication only: accounts are defined in the app and passwords
   are not encrypted. Real accounts would be checked on a server.
-- **No push notifications** when a report's status changes.
-- **No in-app map:** reports have an "Open in Maps" link, but a map of nearby
+- No push notifications when a report's status changes.
+- No in-app map: reports have an "Open in Maps" link, but a map of nearby
   reports would help agency staff.
-- **English only:** the language option was hidden for this version. A Dhivehi
+- English only: the language option was hidden for this version. A Dhivehi
   translation (right-to-left) is planned.
-- **Agency web dashboard:** staff would realistically use a desktop dashboard;
+- Agency web dashboard: staff would realistically use a desktop dashboard;
   this is planned alongside the Supabase backend.
 - Nominatim is a free community service with usage limits; a production app
   would use its own geocoding provider.
