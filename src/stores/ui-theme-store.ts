@@ -105,5 +105,6 @@ export class UIThemeStore {
 
   hydrate = async (): PVoid => {
     await hydrateStore(this);
+    colorScheme.set(this.isSystemAppearance ? 'system' : this.appearance);
   };
 }
