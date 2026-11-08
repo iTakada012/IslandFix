@@ -1,4 +1,4 @@
-# 🏝️ IslandFix: Civic Issue Reporting App
+# IslandFix: Civic Issue Reporting App
 
 IslandFix lets residents of a small island report local problems, such as a broken
 street light, a water leak or overflowing sewage, straight from their phone.
@@ -21,7 +21,7 @@ data is stored on the device.
 
 ---
 
-## 📲 Installation & Run Instructions
+## Installation & Run Instructions
 
 ### Requirements
 - **Node.js 20 or 22 LTS** and **Yarn 1.x** (`npm install -g yarn`)
@@ -62,7 +62,7 @@ Sample reports are added on first launch. **Settings → Reset demo data** resto
 
 ---
 
-## ✨ Feature List
+## Feature List
 
 | Feature | Description |
 |---|---|
@@ -82,7 +82,7 @@ Sample reports are added on first launch. **Settings → Reset demo data** resto
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 | Onboarding | Sign in (choose role) | Community reports |
 |---|---|---|
@@ -118,7 +118,7 @@ onboarding and sign in.
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Area | Technology |
 |---|---|
@@ -136,7 +136,7 @@ onboarding and sign in.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -168,7 +168,7 @@ src/
 
 ---
 
-## 🧪 Testing & Error Handling
+## Testing & Error Handling
 
 - **26 unit tests** (`yarn test`) cover routing rules, status transitions,
   permissions, list filtering, sorting, helpers and the reports store.
@@ -182,7 +182,7 @@ src/
 
 ---
 
-## 🐞 Known Issues & Future Improvements
+## Known Issues & Future Improvements
 
 - **Single device only:** there is no backend, so reports are not shared between
   phones. Roles are demonstrated by signing out and in on the same device. A
@@ -198,7 +198,7 @@ src/
 
 ---
 
-## 💭 Reflection
+## Reflection
 
 *(Write this section in your own words: what went well, what was difficult,
 what you learned about React Native / Expo, and what you would do differently.
