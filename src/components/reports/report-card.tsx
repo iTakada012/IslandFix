@@ -4,6 +4,7 @@ import React from 'react';
 import {Image, Pressable, Text, View} from '@/components/ui';
 import {getCategory, timeAgo, type Report} from '@/lib/reports';
 import {AgencyBadge, StatusBadge} from './badges';
+import {CategoryIcon} from './category-icon';
 
 /** Summary card used in the reports list. Tapping opens the details screen. */
 export const ReportCard = ({report}: {report: Report}) => {
@@ -24,7 +25,7 @@ export const ReportCard = ({report}: {report: Report}) => {
           />
         ) : (
           <View className="mr-3 size-20 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800">
-            <Text className="text-4xl">{category.icon}</Text>
+            <CategoryIcon category={report.category} size={36} />
           </View>
         )}
 

@@ -3,7 +3,7 @@ import {observer} from 'mobx-react-lite';
 import * as React from 'react';
 import {Alert, Linking, Platform} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
-
+import {CategoryIcon} from '@/components/reports/category-icon';
 import {useAuth} from '@/app/providers/auth/auth-provider';
 import {AgencyBadge, StatusBadge} from '@/components/reports/badges';
 import {EmptyState} from '@/components/reports/empty-state';
@@ -42,7 +42,7 @@ export default observer(function ReportDetails() {
       <>
         <Stack.Screen options={{title: 'Report'}} />
         <EmptyState
-          icon="🔍"
+          icon="magnify"
           title="Report not found"
           message="It may have been withdrawn.">
           <Button
@@ -144,7 +144,7 @@ export default observer(function ReportDetails() {
 
         {/* Header */}
         <View className="flex-row items-center">
-          <Text className="mr-2 text-3xl">{category.icon}</Text>
+          <View className="mr-2"><CategoryIcon category={report.category} size={30} /></View>
           <Text className="flex-1 text-2xl font-bold">{category.label}</Text>
           <StatusBadge status={report.status} />
         </View>
@@ -152,9 +152,17 @@ export default observer(function ReportDetails() {
 
         {/* Where */}
         <Section title="Where">
-          {report.landmark ? <Text>🏷️ {report.landmark}</Text> : null}
+          {report.landmark ? (
+            <View className="flex-row items-center">
+              <AppIcon name="tag-outline" size={18} color="#737373" />
+              <Text className="ml-2">{report.landmark}</Text>
+            </View>
+          ) : null}
           {report.address ? (
-            <Text className="mt-1">📍 {report.address}</Text>
+            <View className="mt-1 flex-row items-center">
+              <AppIcon name="map-marker-outline" size={18} color="#737373" />
+              <Text className="ml-2 flex-1">{report.address}</Text>
+            </View>
           ) : null}
           {report.location ? (
             <Button

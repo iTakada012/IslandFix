@@ -23,9 +23,9 @@ export const ThemeItem = observer(() => {
 
   // translate() is already reactive to language changes
   const themes = [
-    {label: `${translate('settings.theme.dark')} 🌙`, value: 'Dark'},
-    {label: `${translate('settings.theme.light')} 🌞`, value: 'Light'},
-    {label: `${translate('settings.theme.system')} ⚙️`, value: 'System'},
+    {label: `${translate('settings.theme.dark')} `, value: 'Dark'},
+    {label: `${translate('settings.theme.light')} `, value: 'Light'},
+    {label: `${translate('settings.theme.system')} `, value: 'System'},
   ];
 
   const theme = themes.find(t => t.value === uiTheme.selectedTheme);

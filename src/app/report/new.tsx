@@ -6,9 +6,10 @@ import {Controller, useForm} from 'react-hook-form';
 import {ActivityIndicator, KeyboardAvoidingView, Platform} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {z} from 'zod';
-
+import {CategoryIcon} from '@/components/reports/category-icon';
 import {useAuth} from '@/app/providers/auth/auth-provider';
 import {AgencyBadge} from '@/components/reports/badges';
+import {AppIcon} from '@/components/ui/app-icon';
 import {
   Button,
   ControlledInput,
@@ -159,7 +160,7 @@ export default observer(function NewReport() {
                             ? 'border-blue-600 bg-blue-50 dark:bg-blue-950'
                             : 'border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-900'
                         }`}>
-                        <Text className="text-3xl">{c.icon}</Text>
+                        <CategoryIcon category={c.id} size={30} />
                         <Text className="mt-1 text-center text-xs font-semibold">
                           {c.label}
                         </Text>
@@ -243,7 +244,8 @@ export default observer(function NewReport() {
             <Button
               testID="take-photo"
               variant="outline"
-              label="📷  Camera"
+              label="Camera"
+              icon={<AppIcon name="camera-outline" size={20} />}
               className="flex-1"
               loading={photoBusy}
               onPress={() => onPickPhoto('camera')}
@@ -251,7 +253,8 @@ export default observer(function NewReport() {
             <Button
               testID="choose-photo"
               variant="outline"
-              label="🖼️  Gallery"
+              label="Gallery"
+              icon={<AppIcon name="image-outline" size={20} />}
               className="flex-1"
               disabled={photoBusy}
               onPress={() => onPickPhoto('library')}
@@ -307,7 +310,8 @@ function LocationBox({
         <Button
           testID="use-location"
           variant="outline"
-          label="📍  Use my current location"
+          label="Use my current location"
+          icon={<AppIcon name="crosshairs-gps" size={20} />}
           onPress={onUseLocation}
         />
         {state.kind === 'error' && (
@@ -332,9 +336,12 @@ function LocationBox({
 
   return (
     <View className="rounded-xl bg-white p-4 dark:bg-neutral-900">
-      <Text className="font-semibold">
-        📍 {state.address ?? 'Location saved'}
-      </Text>
+      <View className="flex-row items-center">
+        <AppIcon name="map-marker" size={18} />
+        <Text className="ml-1 flex-1 font-semibold">
+          {state.address ?? 'Location saved'}
+        </Text>
+      </View>
       <Text className="text-xs text-neutral-500">
         {state.point.latitude.toFixed(5)}, {state.point.longitude.toFixed(5)}
       </Text>

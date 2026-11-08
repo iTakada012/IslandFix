@@ -5,7 +5,12 @@
  * one lead agency (responsible for fixing it) and optional agencies that are
  * copied in (CC) so they stay informed.
  */
+import type {MaterialCommunityIcons} from '@expo/vector-icons';
+import type {ComponentProps} from 'react';
+
 import type {AgencyId, CategoryId, ReportStatus} from './types';
+
+export type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
 
 export type Agency = {
   id: AgencyId;
@@ -44,7 +49,7 @@ export const AGENCY_IDS = Object.keys(AGENCIES) as AgencyId[];
 export type Category = {
   id: CategoryId;
   label: string;
-  icon: string; // emoji keeps things simple and works on every platform
+  icon: IconName;
   hint: string;
   lead: AgencyId;
   cc: AgencyId[];
@@ -54,7 +59,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'street_light',
     label: 'Street light',
-    icon: '💡',
+    icon: 'lightbulb-on-outline',
     hint: 'Broken, flickering or always-on lamp',
     lead: 'stelco',
     cc: ['council'],
@@ -62,7 +67,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'power_outage',
     label: 'Power / wires',
-    icon: '⚡',
+    icon: 'transmission-tower',
     hint: 'Outage, exposed or fallen wires',
     lead: 'stelco',
     cc: ['council'],
@@ -70,7 +75,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'water_leak',
     label: 'Water leak',
-    icon: '💧',
+    icon: 'pipe-leak',
     hint: 'Burst or leaking pipe',
     lead: 'mwsc',
     cc: ['council'],
@@ -78,7 +83,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'no_water',
     label: 'No water',
-    icon: '🚱',
+    icon: 'water-off-outline',
     hint: 'No supply or low pressure',
     lead: 'mwsc',
     cc: [],
@@ -86,7 +91,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'sewage',
     label: 'Sewage / drain',
-    icon: '🚧',
+    icon: 'water-alert-outline',
     hint: 'Overflowing sewage or blocked drain',
     lead: 'mwsc',
     cc: ['council'],
@@ -94,7 +99,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'road_damage',
     label: 'Road damage',
-    icon: '🛣️',
+    icon: 'road-variant',
     hint: 'Potholes, flooding, damaged paving',
     lead: 'council',
     cc: [],
@@ -102,7 +107,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'waste',
     label: 'Waste',
-    icon: '🗑️',
+    icon: 'trash-can-outline',
     hint: 'Missed collection or illegal dumping',
     lead: 'council',
     cc: [],
@@ -110,7 +115,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'public_space',
     label: 'Public space',
-    icon: '🌴',
+    icon: 'palm-tree',
     hint: 'Parks, beaches, benches, trees',
     lead: 'council',
     cc: [],
@@ -118,7 +123,7 @@ export const CATEGORIES: Category[] = [
   {
     id: 'other',
     label: 'Other',
-    icon: '📝',
+    icon: 'dots-horizontal-circle-outline',
     hint: 'Anything else for the council',
     lead: 'council',
     cc: [],

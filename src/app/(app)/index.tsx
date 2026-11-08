@@ -81,7 +81,7 @@ export default observer(function ReportsScreen() {
         contentContainerStyle={{paddingBottom: 96}}
         ListEmptyComponent={
           <EmptyState
-            icon={statusFilter === 'open' ? '✅' : '📭'}
+            icon={statusFilter === 'open' ? 'check-circle-outline' : 'inbox-outline'}
             title={
               scope === 'mine'
                 ? 'No reports here yet'

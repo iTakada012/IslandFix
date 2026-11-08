@@ -1,5 +1,7 @@
 import {useRouter} from 'expo-router';
 import React from 'react';
+import {AppIcon} from '@/components/ui/app-icon';
+import type {IconName} from '@/lib/reports';
 
 import {
   Button,
@@ -27,7 +29,7 @@ export default function Onboarding() {
       <FocusAwareStatusBar />
       <View className="flex-1 justify-center px-6">
         <View className="mb-6 size-24 items-center justify-center self-center rounded-3xl bg-blue-600">
-          <Text className="text-5xl">🏝️</Text>
+          <AppIcon name="island" size={56} color="#ffffff" />
         </View>
         <Text className="text-center text-4xl font-bold">IslandFix</Text>
         <Text className="mb-8 mt-2 text-center text-lg text-neutral-500">
@@ -36,7 +38,9 @@ export default function Onboarding() {
 
         {POINTS.map(p => (
           <View key={p.icon} className="mb-4 flex-row items-center">
-            <Text className="mr-4 text-3xl">{p.icon}</Text>
+            <View className="mr-4">
+              <AppIcon name={p.icon} size={30} />
+            </View>
             <Text className="flex-1 text-base">{p.text}</Text>
           </View>
         ))}
