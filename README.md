@@ -228,7 +228,7 @@ src/
 | Package version warnings on startup | Starter template packages did not match Expo SDK 53 | Aligned with `npx expo install --fix` |
 
 ### Devices tested
-Android (Samsung, Expo Go SDK 53), iOS Simulator and web browser.
+Android (Samsung, Expo Go SDK 53), web browser.
 
 ---
 
