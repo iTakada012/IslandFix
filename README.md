@@ -254,15 +254,6 @@ Android (Samsung, Expo Go SDK 53), web browser.
 
 ---
 
-## Reflection
-
-*(Write this section in your own words: what went well, what was difficult,
-what you learned about React Native, Expo and debugging on real devices, and
-what you would do differently. Link it to the findings from your user testing
-report.)*
-
----
-
 ## Credits
 
 - Starter template: [RN-ExpoGo-Villa-Sample](https://github.com/Yasir5247/RN-ExpoGo-Villa-Sample)
